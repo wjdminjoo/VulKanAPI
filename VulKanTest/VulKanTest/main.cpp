@@ -5,33 +5,69 @@
 //  Created by MinJu Jeong on 26/08/2019.
 //  Copyright © 2019 MinJu Jeong. All rights reserved.
 //
-
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
 #include <vulkan/vulkan.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <stdexcept>
+#include <functional>
+#include <cstdlib>
 
-int main(void)
-{
-    // initialize the VkInstanceCreateInfo structure
-    VkInstanceCreateInfo inst_info = {};
-    inst_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-    
-    VkInstance inst;
-    VkResult res;
-    
-    res = vkCreateInstance(&inst_info, NULL, &inst);
-    
-    if (res == VK_ERROR_INCOMPATIBLE_DRIVER) {
-        fprintf(stderr, "cannot find a compatible Vulkan ICD\n");
-        exit(-1);
+const int WIDTH = 800;
+const int HEIGHT = 600;
+
+class HelloTriangleApplication {
+public:
+    void run() {
+        initWindow();
+        initVulkan();
+        mainLoop();
+        cleanup();
     }
-    else if (res) {
-        fprintf(stderr, "unknown error\n");
-        exit(-1);
-    }
-    // else -> success
-    printf("Hello Vulkan\n");
     
-    vkDestroyInstance(inst, NULL);
-    return 0;
+private:
+    GLFWwindow* window;
+    VkInstance instance;
+    void initWindow(){
+        glfwInit();
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+        
+        window = glfwCreateWindow(WIDTH, HEIGHT, "VulkanTest", nullptr, nullptr);
+    }
+    void initVulkan() {
+        createInstance();
+    }
+    
+    void mainLoop() {
+        while (!glfwWindowShouldClose(window)) {
+            glfwPollEvents();
+        }
+    }
+    
+    void cleanup() {
+        glfwDestroyWindow(window);
+        glfwTerminate();
+    }
+    
+    void createInstance(){
+        VkApplication appInfo = {};
+        appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+        appInfo.pApplicationName = "Hello Triagle";
+        appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
+    }
+    
+};
+
+int main() {
+    HelloTriangleApplication app;
+    
+    try {
+        app.run();
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+    
+    return EXIT_SUCCESS;
 }

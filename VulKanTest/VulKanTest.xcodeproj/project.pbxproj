@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52015AE7231E776A00446E47 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52015AE6231E776A00446E47 /* OpenGL.framework */; };
+		52015AE9231E7B1F00446E47 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 52015AE8231E7B1F00446E47 /* libglfw.3.3.dylib */; };
 		5255EE712314275F00DE65E0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5255EE702314275F00DE65E0 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		52015AE6231E776A00446E47 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		52015AE8231E7B1F00446E47 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		5255EE6D2314275F00DE65E0 /* VulKanTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = VulKanTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5255EE702314275F00DE65E0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,17 +36,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52015AE9231E7B1F00446E47 /* libglfw.3.3.dylib in Frameworks */,
+				52015AE7231E776A00446E47 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52015AE5231E776A00446E47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52015AE8231E7B1F00446E47 /* libglfw.3.3.dylib */,
+				52015AE6231E776A00446E47 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5255EE642314275E00DE65E0 = {
 			isa = PBXGroup;
 			children = (
 				5255EE6F2314275F00DE65E0 /* VulKanTest */,
 				5255EE6E2314275F00DE65E0 /* Products */,
+				52015AE5231E776A00446E47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,8 +257,14 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PCJS48ZV9Z;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/Cellar/glfw/3.3/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/glfw/3.3/lib,
+				);
 				OTHER_LDFLAGS = "-lvulkan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -253,8 +275,14 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PCJS48ZV9Z;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/Cellar/glfw/3.3/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/glfw/3.3/lib,
+				);
 				OTHER_LDFLAGS = "-lvulkan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
