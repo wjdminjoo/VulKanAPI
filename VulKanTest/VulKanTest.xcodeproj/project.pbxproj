@@ -255,6 +255,7 @@
 		5255EE752314275F00DE65E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PCJS48ZV9Z;
 				HEADER_SEARCH_PATHS = (
@@ -273,6 +274,7 @@
 		5255EE762314275F00DE65E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PCJS48ZV9Z;
 				HEADER_SEARCH_PATHS = (
